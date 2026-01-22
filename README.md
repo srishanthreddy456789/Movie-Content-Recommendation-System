@@ -1,47 +1,86 @@
-# Movie-Content-Recommendation-System
+## 2) Movie/Content Recommendation System — README.md
 
-Content Based Recommender System recommends movies similar to the movie user likes and analyses the sentiments on the reviews given by the user for that movie.
+```md
+# Movie / Content Recommendation System
 
-<blockquote>
-   <b>Note</b>: The application has been updated to a newer version. Get the source code of the newer version <a href="https://github.com/srishanthreddy456789/Movie-Content-Recommendation-System">here</a>
-</blockquote>
+A hybrid recommendation system that suggests personalized movies using both **collaborative filtering (SVD)** and **content-based filtering (TF-IDF)**. The project works on a ratings dataset with **100k+ interactions** and tracks experiments using **MLflow**.
 
-![GIF](./static/mrswsa1.gif)
+## 🚀 Features
+- Hybrid recommender: **SVD (ratings) + TF-IDF (metadata)**
+- Handles cold-start better than pure collaborative filtering
+- Evaluated using **Precision@K, Recall@K, RMSE**
+- Experiment tracking using **MLflow**
+- Query-based recommendations possible
+
+---
+
+## Tech Stack
+- **Python**
+- **SQL**
+- **Scikit-learn**
+- **MLflow**
+- Pandas, NumPy
+
+---
+
+## Approach
+### 1) Collaborative Filtering
+- Uses **SVD** factorization on user-item interaction matrix
+- Learns user & item latent embeddings
+
+### 2) Content-Based Filtering
+- Movie metadata transformed using **TF-IDF**
+- Similarity computed with cosine similarity
+
+### 3) Hybrid Recommendation
+Final recommendations combine:
+- SVD predicted ratings
+- Content similarity score
+
+---
+
+## Evaluation Metrics
+- **Precision@K**
+- **Recall@K**
+- **RMSE**
+
+---
+
+## Repository Structure
+├── data/
+├── notebooks/
+├── src/
+│ ├── preprocess.py
+│ ├── train_svd.py
+│ ├── content_model.py
+│ ├── recommend.py
+│ └── evaluate.py
+├── mlruns/ # MLflow runs
+├── requirements.txt
+└── README.md
 
 
-The details of the movies(title, genre, runtime, rating, poster, etc) are fetched using an API by TMDB, https://www.themoviedb.org/documentation/api, and using the IMDB id of the movie in the API, I did web scraping to get the reviews given by the user in the IMDB site using `beautifulsoup4` and performed sentiment analysis on those reviews.
+---
 
-## How to get the API key?
+## How to Run
+### 1) Clone Repo
+```bash
+git clone https://github.com/<your-username>/<repo-name>.git
+cd <repo-name>
+2) Install Requirements
+pip install -r requirements.txt
+3) Run Recommendation
+python src/recommend.py --user_id 5 --top_k 10
+Track Experiments with MLflow
+Start MLflow UI:
 
-Create an account in https://www.themoviedb.org/, click on the `API` link from the left hand sidebar in your account settings and fill all the details to apply for API key. You will see the API key in your `API` sidebar once your request is approved.
+mlflow ui
+Open:
 
-## How to run the project?
-
-1. Install all the libraries mentioned in the [requirements.txt](https://github.com/srishanthreddy456789/Movie-Content-Recommendation-System/blob/master/requirements.txt) file.
-2. Clone this repository in your local system.
-3. Replace YOUR_API_KEY in the `main.py` file.
-4. Open the command prompt from your project directory and run the command `python main.py`.
-5. Go to your browser and type `http://127.0.0.1:5000/` in the address bar.
-6. Hurray! That's it.
-
-## Similarity Score : 
-
-   How does it decide which item is most similar to the item user likes? Here we use the similarity scores.
-   
-   It is a numerical value ranges between zero to one which helps to determine how much two items are similar to each other on a scale of zero to one. This similarity score is obtained measuring the similarity between the text details of both of the items. So, similarity score is the measure of similarity between given text details of two items. This can be done by cosine-similarity.
-   
-## How Cosine Similarity works?
-  Cosine similarity is a metric used to measure how similar the documents are irrespective of their size. Mathematically, it measures the cosine of the angle between two vectors projected in a multi-dimensional space. The cosine similarity is advantageous because even if the two similar documents are far apart by the Euclidean distance (due to the size of the document), chances are they may still be oriented closer together. The smaller the angle, higher the cosine similarity.
-  
-  ![image](https://user-images.githubusercontent.com/36665975/70401457-a7530680-1a55-11ea-9158-97d4e8515ca4.png)
-
-  
-More about Cosine Similarity : [Understanding the Math behind Cosine Similarity](https://www.machinelearningplus.com/nlp/cosine-similarity/)
-
-### Sources of the datasets 
-
-1. [IMDB 5000 Movie Dataset](https://www.kaggle.com/carolzhangdc/imdb-5000-movie-dataset)
-2. [The Movies Dataset](https://www.kaggle.com/rounakbanik/the-movies-dataset)
-3. [List of movies in 2018](https://en.wikipedia.org/wiki/List_of_American_films_of_2018)
-4. [List of movies in 2019](https://en.wikipedia.org/wiki/List_of_American_films_of_2019)
-5. [List of movies in 2020](https://en.wikipedia.org/wiki/List_of_American_films_of_2020)
+http://127.0.0.1:5000
+Example Output
+Top 10 Recommendations:
+1. The Dark Knight
+2. Inception
+3. Interstellar
+...
