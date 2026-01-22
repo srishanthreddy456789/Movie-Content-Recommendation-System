@@ -1,7 +1,5 @@
-## 2) Movie/Content Recommendation System — README.md
 
-```md
-# Movie / Content Recommendation System
+## Movie / Content Recommendation System
 
 A hybrid recommendation system that suggests personalized movies using both **collaborative filtering (SVD)** and **content-based filtering (TF-IDF)**. The project works on a ratings dataset with **100k+ interactions** and tracks experiments using **MLflow**.
 
