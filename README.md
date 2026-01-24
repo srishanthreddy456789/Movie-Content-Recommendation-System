@@ -44,18 +44,21 @@ Final recommendations combine:
 
 ---
 
-## Repository Structure
-├── data/
-├── notebooks/
-├── src/
-│ ├── preprocess.py
-│ ├── train_svd.py
-│ ├── content_model.py
-│ ├── recommend.py
-│ └── evaluate.py
-├── mlruns/ # MLflow runs
-├── requirements.txt
-└── README.md
+📦 Movie-Content-Recommendation-System
+│
+├── 📁 data/                  # Dataset files
+├── 📁 notebooks/             # Jupyter notebooks for experiments
+├── 📁 src/                   # Source code
+│   ├── preprocess.py         # Data preprocessing
+│   ├── train_svd.py          # Model training (SVD)
+│   ├── content_model.py      # Content-based recommendation logic
+│   ├── recommend.py          # Generate recommendations
+│   └── evaluate.py           # Evaluation metrics
+│
+├── 📁 mlruns/                # MLflow experiment tracking
+├── requirements.txt          # Project dependencies
+└── README.md                 # Project documentation
+
 
 
 ---
